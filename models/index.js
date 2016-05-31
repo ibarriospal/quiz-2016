@@ -4,9 +4,8 @@ var path = require('path');
 var Sequelize = require('sequelize');
 
 // Usar BBDD SQLite:
-
-//DATABASE_URL = sqlite:///
-//DATABASE_STORAGE = quiz.sqlite
+//  DATABASE_URL = sqlite:///
+//  DATABASE_STORAGE = quiz.sqlite
 
 //Usar BBDD Postgres:
 //  DATABASE_URL = postgres://krkwzvbvdyowkj:HnTv3J1Omp9J0OMudIayZFCQUL@ec2-54-163-239-28.compute-1.amazonaws.com:5432/dbfmehc6m1aeei
@@ -54,4 +53,5 @@ sequelize.sync()
      });
  
  
- exports.Quiz = Quiz; // exportar definición de tabla Quiz
+
+exports.Quiz = Quiz; // exportar definición de tabla Quiz
