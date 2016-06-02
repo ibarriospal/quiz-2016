@@ -1,57 +1,15 @@
-var path = require('path');
-
-// Cargar Modelo ORM
-var Sequelize = require('sequelize');
-
-// Usar BBDD SQLite:
-//  DATABASE_URL = sqlite:///
-//  DATABASE_STORAGE = quiz.sqlite
-
-//Usar BBDD Postgres:
-//  DATABASE_URL = postgres://krkwzvbvdyowkj:HnTv3J1Omp9J0OMudIayZFCQUL@ec2-54-163-239-28.compute-1.amazonaws.com:5432/dbfmehc6m1aeei
-
-var url, storage;
-
-if(!process.env.DATABASE_URL){
-  url = "sqlite:///";
-  storage = "quiz.sqlite";
-} else{
-  url = process.env.DATABASE_URL;
-  storage = process.env.DATABASE_STORAGE || "";
-}
-
-var sequelize = new Sequelize(url, 
-                             { storage: "storage", 
-                               omitNull: true
-                             });
-
-
-// Importar la definicion de la tabla Quiz de quiz.js
-var Quiz = sequelize.import(path.join(__dirname,'quiz'));
-
-
-// sequelize.sync() crea e inicializa tabla de preguntas en DB
-sequelize.sync()
-    .then(function() {
-        // Ya se han creado las tablas necesarias.
-        return Quiz.
-                count()
-                .then(function (c){
-                  if (c == 0) {
-                      return Quiz.bulkCreate([ {question: 'Capital de Italia',   answer: 'Roma'},
-                                               {question: 'Capital de Portugal', answer: 'Lisboa'}
-                                              ])
-                    .then(function() {
-                                         console.log('Base de datos inicializada con datos');
-                                     });
-                     }
-                 });
-     })
-     .catch(function(error) {
-         console.log("Error Sincronizando las tablas de la BBDD:", error);
-         process.exit(1);
-     });
+var path = require ('path');
  
- 
+ //Cargar Modelo ORM
+  var Sequelize = require("sequelize");
+    
+  //Usar BBDD Sqlite en mi máquina
+ var sequelize = new Sequelize(null, null, null, {
+  dialect: "sqlite",
+  storage: "quiz.sqlite"
 
-exports.Quiz = Quiz; // exportar definición de tabla Quiz
+ });
+  //Importar la definición de la tabla Quiz de quiz.js
+  var Quiz = sequelize.import(path.join(__dirname, "quiz"));
+  
+  exports.Quiz = Quiz; //exporta la deifinición de la tabla Quiz 
