@@ -12,4 +12,12 @@ var path = require ('path');
   //Importar la definición de la tabla Quiz de quiz.js
   var Quiz = sequelize.import(path.join(__dirname, "quiz"));
   
-  exports.Quiz = Quiz; //exporta la deifinición de la tabla Quiz 
+//Importar la definición de la tabla Comments de comment.js
+ var Comment = sequelize.import(path.join(__dirname, 'comment'));
+
+ //Relaciones entre modelos
+ Comment.belongsTo(Quiz);
+ Quiz.hasMany(Comment);
+ 
+ exports.Quiz = Quiz; //exporta la deifinición de la tabla Quiz
+ exports.Comment = Comment; 

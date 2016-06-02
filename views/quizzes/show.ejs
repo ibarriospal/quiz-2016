@@ -11,3 +11,11 @@
     </p>
   </form>
 </p>
+
+<p> <a href="/quizzes/<%= quiz.id %>/comments/new"> <button> Añadir comentario </button></a> </p>
+ <p> <strong> Comentarios: </strong> </p>
+ 	<ul>
+ 		<% for (var i in quiz.Comments) {%>
+ 			<li> <%= quiz.Comments[i].text %> </li>
+ 		<%}%>
+	</ul>
