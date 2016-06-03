@@ -8,6 +8,13 @@
  router.get('/', function(req, res, next) {
    res.render('index');
  });
+
+//GET/author
+ router.get('/author', function(req, res, next){
+ 	res.render('author', { link:'<a href="https://github.com/ibarriospal/quiz">Proyecto en github</a>',
+ 		foto1: '<img src="foto.jpg">',
+ 	})
+ });
  
  // Autoload de rutas que usen :quizId
 router.param('quizId', quizController.load);  // autoload :quizId
@@ -23,5 +30,6 @@ router.param('quizId', quizController.load);  // autoload :quizId
  router.delete('/quizzes/:quizId(\\d+)',    quizController.destroy);
  router.get('/quizzes/:quizId(\\d+)/comments/new', commentController.new);
  router.post('/quizzes/:quizId(\\d+)/comments', commentController.create);
+
  
  module.exports = router;
