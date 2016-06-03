@@ -30,6 +30,7 @@ router.param('quizId', quizController.load);  // autoload :quizId
  router.delete('/quizzes/:quizId(\\d+)',    quizController.destroy);
  router.get('/quizzes/:quizId(\\d+)/comments/new', commentController.new);
  router.post('/quizzes/:quizId(\\d+)/comments', commentController.create);
+ router.get('/quizzes/search' , quizController.search);
 
  
  module.exports = router;
