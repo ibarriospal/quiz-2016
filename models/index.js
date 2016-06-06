@@ -14,7 +14,7 @@ var path = require ('path');
   
 //Importar la definición de la tabla Comments de comment.js
  var Comment = sequelize.import(path.join(__dirname, 'comment'));
- var User = sequelize.import(path.join(__dirname, 'comment')); 
+ var User = sequelize.import(path.join(__dirname, 'user')); 
 
  //Relaciones entre modelos
  Comment.belongsTo(Quiz);
