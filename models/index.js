@@ -20,6 +20,10 @@ var path = require ('path');
  Comment.belongsTo(Quiz);
  Quiz.hasMany(Comment);
  
+ // Relacion 1 a N entre User y Quiz:
+ User.hasMany(Quiz, {foreignKey: 'AuthorId'});
+ Quiz.belongsTo(User, {as: 'Author', foreignKey: 'AuthorId'}); // Añade Author a quiz en lugar de AuthorId
+ 
  exports.Quiz = Quiz; //exporta la deifinición de la tabla Quiz
  exports.Comment = Comment; 
  exports.User = User;
