@@ -12,7 +12,7 @@
  
        return queryInterface.bulkInsert('Users', [ 
           { username: 'admin', 
-            password: encryptPassword('istrador', 'aaaa'),
+            password: encryptPassword('1234', 'aaaa'),
             salt:     'aaaa',
             isAdmin: true,
             createdAt: new Date(), updatedAt: new Date() },

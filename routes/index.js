@@ -4,6 +4,7 @@
  var quizController = require('../controllers/quiz_controller');
  var commentController = require('../controllers/comment_controller');
  var userController = require('../controllers/user_controller');
+ var sessionController = require('../controllers/session_controller');
 
  /* GET home page. */
  router.get('/', function(req, res, next) {
@@ -34,7 +35,11 @@ router.param('userId', userController.load);  // autoload :userId
  router.post('/quizzes/:quizId(\\d+)/comments', commentController.create);
  router.get('/quizzes/search' , quizController.search);
 
- 
+ // Definición de rutas de sesión
+ router.get('/session',    sessionController.new);     // formulario login
+ router.post('/session',   sessionController.create);  // crear sesión
+ router.delete('/session', sessionController.destroy); // destruir sesión
+
  // Definición de rutas de cuenta
  router.get('/users',                    userController.index);   // listado usuarios
  router.get('/users/:userId(\\d+)',      userController.show);    // ver un usuario
