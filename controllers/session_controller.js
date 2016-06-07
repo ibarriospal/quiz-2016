@@ -1,7 +1,15 @@
 var models = require('../models');
 var Sequelize = require('sequelize');
 var url = require('url');
-var timeoutSession = 300000// Tiempo de expiración de sesión de usuario 
+var timeoutSession = 120000// Tiempo de expiración de sesión de usuario 
+
+exports.loginRequired = function (req, res, next) {
+     if (req.session.user) {
+         next();
+     } else {
+         res.redirect('/session?redir=' + (req.param('redir') || req.url));
+     }
+};
  /*
   * Autenticar un usuario: Comprueba si el usuario esta registrado en users
   *
