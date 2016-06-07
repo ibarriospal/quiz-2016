@@ -13,7 +13,7 @@
 
 //GET/author
  router.get('/author', function(req, res, next){
- 	res.render('author', { link:'<a href="https://github.com/ibarriospal/quiz">Proyecto en github</a>',
+ 	res.render('author', { link:'<a href="https://github.com/ibarriospal/quiz-2016">Proyecto en github</a>',
  		foto1: '<img src="foto.jpg">',
  	})
  });
@@ -25,8 +25,8 @@ router.param('userId', userController.load);  // autoload :userId
 
 
  // Definición de rutas de /quizzes
- router.get('/quizzes',                     quizController.index);
- router.get('/quizzes/:quizId(\\d+)',       quizController.show);
+ router.get('/quizzes.:format?', quizController.index);
+ router.get('/quizzes/:quizId(\\d+).:format?', quizController.show);
  router.get('/quizzes/:quizId(\\d+)/check', quizController.check);
  router.get('/quizzes/new',                 		sessionController.loginRequired, quizController.new);
  router.post('/quizzes',                    		sessionController.loginRequired, quizController.create); 
