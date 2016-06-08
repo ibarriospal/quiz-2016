@@ -21,7 +21,7 @@
  // Autoload  
 router.param('quizId', quizController.load);  // autoload :quizId
 router.param('userId', userController.load);  // autoload :userId
-+router.param('commentId', commentController.load);  // autoload :commentId
+router.param('commentId', commentController.load);  // autoload :commentId
 
 
  // Definición de rutas de /quizzes
