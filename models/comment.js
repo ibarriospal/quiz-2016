@@ -7,4 +7,4 @@
        	             defaultValue: false
      }
  });
-}
+};
